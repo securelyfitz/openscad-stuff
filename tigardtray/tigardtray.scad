@@ -1,11 +1,21 @@
 difference(){
-    translate([-1.5,-1.5,-1.5])roundedcube(50,105,13.5,5);
-    tigard();
-    translate([3,49,4])bitmagic();
-    translate([23.5,130,0]){
+    union(){
+            translate([-1,-1,-1])roundedcube(50,112,13,5);//main body
+//        translate([-1,-1,-1])roundedcube(50,50,13,5);//main body
+    }
+    tigard();//tigard
+
+    translate([3.5,49,5])bitmagic();//bitmagic
+    translate([24,110,4])    rotate([9,0,0]){
         for (i=[-20:5:19]){
-            translate([i,0,0])probeclip();
+            translate([i,0,0])probeclip();//clips
         }
+    }
+    translate([4,68,5])roundedcube(40,50,8,5);//clip cutout
+    translate([2,68.5,-2]){
+        cylinder(20,2,2,$fn=16);
+        translate([44,0,0])        cylinder(20,2,2,$fn=16);
+
     }
 }
 
@@ -16,14 +26,14 @@ module bitmagic(){
 
 module probeclip(){
     rotate([90,0,0])translate([2.5,6,28]){
-        cylinder(h=30,r=1.5,$fn=12);
+        cylinder(h=33,r1=2,r2=1.25,$fn=12);
         rotate([0,-90,0])cylinder(h=4.5,r=8,$fn=3,center=true);
-        translate([-1.5,-5.5,-28])cube([3,11,24]);
+        translate([-2.5,-7,-30])cube([5,14,26]);
     }
 }
 
 module tigard(){
-    tigardx=47;
+    tigardx=48;
     tigardz=12;
     cutoutx=6;
     cutoutz=1.5;
