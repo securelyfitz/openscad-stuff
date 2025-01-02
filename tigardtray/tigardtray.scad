@@ -2,6 +2,8 @@ difference(){
     union(){
             translate([-1,-1,-1])roundedcube(50,112,13,5);//main body
 //        translate([-1,-1,-1])roundedcube(50,50,13,5);//main body
+    translate([-1,-1,-1])roundedcube(70,112,13,5);//main body
+
     }
     tigard();//tigard
 
@@ -13,10 +15,17 @@ difference(){
     }
     translate([4,68,5])roundedcube(40,50,8,5);//clip cutout
     translate([2,68.5,-2]){
-        cylinder(20,2,2,$fn=16);
+//        cylinder(20,2,2,$fn=16);
         translate([44,0,0])        cylinder(20,2,2,$fn=16);
-
     }
+    translate([1,57,1])
+        cube([2.5,20,15]);
+    translate([-1,57,1])
+        cube([4,3,15]);
+    translate([-1,74,1])
+        cube([4,3,15]);
+    translate([49,-1,0])
+        cube([17,112,13]);
 }
 
 
