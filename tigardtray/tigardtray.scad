@@ -1,3 +1,5 @@
+    translate([3.5,49,4.8])cube([41,18,.2]);
+
 difference(){
     //main body
     translate([-1,-1,-.5])roundedcube(50,110,13.5,5);
@@ -18,7 +20,7 @@ difference(){
     //probe clip end cutout
     translate([0,-11,-5])cube([40,36,15]);
     //clip notch in bottom
-    translate([0,-27.9,-5])cube([40,5,20]);
+    //translate([0,-25.9,-5])cube([40,3,20]);
 }
     //clip top cutout
     translate([4,68,2.5])roundedcube(40,50,12,5);
@@ -38,7 +40,7 @@ module bitmagic(){
 module probeclip(){
     rotate([90,0,0])translate([2.5,6,30]){
         //clip long end
-        cylinder(h=29.8,r1=2,r2=1.25,$fn=12);
+        cylinder(h=29,r1=2,r2=1.25,$fn=12);
         //clip triangle middle
         //rotate([0,-90,0])cylinder(h=.5,r=8,$fn=3,center=true);
         translate([2.5,0,0])rotate([0,-90,0])linear_extrude(height=5)polygon(points=[[-7,-7],[-7,7],[5.5,1.25],[5.5,-1.25]]);
