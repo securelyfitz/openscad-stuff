@@ -1,37 +1,32 @@
 difference(){
-    union(){
-            translate([-1,-1,-1])roundedcube(50,110,14,5);//main body
-//        translate([-1,-1,-1])roundedcube(50,50,13,5);//main body
-//    translate([-1,-1,-1])roundedcube(70,112,13,5);//main body
+    //main body
+    translate([-1,-1,-1])roundedcube(50,110,14,5);
+    //tigard
+    tigard();
+    //tigard cutout
+    //translate([6,-1,-1])cube([36,49,15]);
+    //bitmagic
+    translate([3.5,49,5])bitmagic();
+    //probe clips
 
-    }
-    tigard();//tigard
-
-    translate([3.5,49,5])bitmagic();//bitmagic
-    translate([24,110,3])    rotate([8,0,0]){
+    translate([4,108,0]){
+    translate([20-0,0,0])rotate([5,0,0]){
         for (i=[-20:5:19]){
-            translate([i,0,0])probeclip();//clips
+            translate([i,0,0])probeclip();
         }
     }
-    translate([4,68,5])roundedcube(40,50,8,5);//clip cutout
+    //probe clip end cutout
+    translate([0,-11,-1])cube([40,36,15]);
+}
+    //clip top cutout
+    translate([4,68,1.7])roundedcube(40,50,12,5);
+    //mounting holes
     translate([2,68.5,-2]){
         cylinder(20,2,2,$fn=16);
         translate([44,0,0])        cylinder(20,2,2,$fn=16);
     }
-    translate([6,-1,-1])
-        cube([36,49,15]);
-    translate([4,90,-1])
-        cube([40,36,15]);
-/*
-    translate([1,57,1])
-        cube([2.5,20,15]);
-    translate([-1,57,1])
-        cube([4,3,15]);
-    translate([-1,74,1])
-        cube([4,3,15]);
-    translate([49,-1,0])
-        cube([17,112,13]);
-*/
+    //business card
+    translate([3,0,12.5])roundedcube(42,83,.5,.5);
 }
 
 
@@ -41,9 +36,13 @@ module bitmagic(){
 
 module probeclip(){
     rotate([90,0,0])translate([2.5,6,30]){
-        cylinder(h=33,r1=2,r2=1.25,$fn=12);
-        rotate([0,-90,0])cylinder(h=4.5,r=8,$fn=3,center=true);
-        translate([-2.5,-6,-30])cube([5,12,26]);
+        //clip long end
+        cylinder(h=29.8,r1=2,r2=1.25,$fn=12);
+        //clip triangle middle
+        //rotate([0,-90,0])cylinder(h=.5,r=8,$fn=3,center=true);
+        translate([2.5,0,0])rotate([0,-90,0])linear_extrude(height=5)polygon(points=[[-7,-7],[-7,7],[5.5,1.25],[5.5,-1.25]]);
+        //clip rectangle body
+        translate([-2.5,-5,-33])cube([5,10,26]);
     }
 }
 
