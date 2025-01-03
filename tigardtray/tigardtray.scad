@@ -1,34 +1,35 @@
 difference(){
     //main body
-    translate([-1,-1,-1])roundedcube(50,110,14,5);
+    translate([-1,-1,-.5])roundedcube(50,110,13.5,5);
     //tigard
     tigard();
     //tigard cutout
     //translate([6,-1,-1])cube([36,49,15]);
     //bitmagic
-    translate([3.5,49,5])bitmagic();
+    translate([3.5,49,4.8])bitmagic();
     //probe clips
 
-    translate([4,108,0]){
-    translate([20-0,0,0])rotate([5,0,0]){
+    translate([4,108,2.75]){
+    translate([20-0,0,-.4])rotate([7.25,0,0]){
         for (i=[-20:5:19]){
             translate([i,0,0])probeclip();
         }
     }
     //probe clip end cutout
-    translate([0,-11,-1])cube([40,36,15]);
+    translate([0,-11,-5])cube([40,36,15]);
+    //clip notch in bottom
+    translate([0,-27.9,-5])cube([40,5,20]);
 }
     //clip top cutout
-    translate([4,68,1.7])roundedcube(40,50,12,5);
+    translate([4,68,2.5])roundedcube(40,50,12,5);
     //mounting holes
     translate([2,68.5,-2]){
         cylinder(20,2,2,$fn=16);
-        translate([44,0,0])        cylinder(20,2,2,$fn=16);
+        translate([44,0,0])cylinder(20,2,2,$fn=16);
     }
     //business card
-    translate([3,0,12.5])roundedcube(42,83,.5,.5);
+    translate([3,0,12])roundedcube(42,83,1,.5);
 }
-
 
 module bitmagic(){
     roundedcube(41,18,8,3);
