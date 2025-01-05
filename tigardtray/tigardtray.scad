@@ -9,7 +9,7 @@ difference(){
     //tigard cutout
     //translate([6,-1,-1])cube([36,49,15]);
     //bitmagic
-    translate([3.5,49,4.4])bitmagic();
+    translate([3.5,49,4])bitmagic();
     //probe clips
 
     translate([4,108,2.75]){
@@ -19,20 +19,28 @@ difference(){
         }
     }
     //probe clip end cutout
-    translate([-1.6,-11,-5])cube([43.2,36,15]);
+    translate([-1.5,-11,-5])cube([43.2,36,15]);
     //clip notch in bottom
     //translate([0,-25.9,-5])cube([40,3,20]);
 }
     //clip top cutout
-    translate([2.4,68,2.5])roundedcube(43.2,50,12,5);
+    translate([2.5,78,2.5])roundedcube(43.2,50,12,5);
+    //clip top cutout
+    translate([4.5,68,2.5])roundedcube(39.2,50,12,5);
     //mounting holes
     translate([1.5,68,-2]){
         cylinder(20,1.5,1.5,$fn=16);
         translate([45,0,0])cylinder(20,1.5,1.5,$fn=16);
     }
     //business card
-    translate([3.25,-2,12])roundedcube(41.5,83,1,.5);
-    translate([3.75,-2,12])cube([40.5,200,3]);
+    translate([3.375,0,12])roundedcube(41.25,83,1,.5);
+    translate([4.25,0,12])cube([39.5,200,3]);
+    translate([24,0,14])sphere(10);    
+    difference(){
+        translate([24,-.5,13.5])cube([25,1,8],center=true);
+        translate([11.25,-1,9.5])rotate([90,0,0])cylinder(h=10,r=4,center=true,$fn=16);
+        translate([36.75,-1,9.5])rotate([90,0,0])cylinder(h=10,r=4,center=true,$fn=16);
+    }
 }
 
 module bitmagic(){
@@ -42,10 +50,10 @@ module bitmagic(){
 module probeclip(){
     rotate([90,0,0])translate([2.5,6,30]){
         //clip long end
-        cylinder(h=28,r1=2,r2=1.25,$fn=12);
+        cylinder(h=28,r1=2,r2=1,$fn=12);
         //clip triangle middle
         //rotate([0,-90,0])cylinder(h=.5,r=8,$fn=3,center=true);
-        translate([2.5,0,0])rotate([0,-90,0])linear_extrude(height=5)polygon(points=[[-7,-6.5],[-7,6.5],[5.5,1.25],[5.5,-1.25]]);
+        translate([2.4,0,0])rotate([0,-90,0])linear_extrude(height=4.8)polygon(points=[[-7,-6.5],[-7,6.5],[5.5,1.25],[5.5,-1.25]]);
         //clip rectangle body
         translate([-2.4,-5,-33])cube([4.8,10,26]);
     }
